@@ -1,17 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import AppHeader from "./components/AppHeader";
+import TattooItem from "./components//TattooItem";
+import TattooPost from "./components/TattooPost";
+import TattooModel from "./ModelData/tattoos";
 
 function App() {
-  const textInput = <input type= "text"></input>
+    const tattooElement = TattooModel.map((tattoo, index) =>{
+        return <TattooItem key={index} tattoo={tattoo}></TattooItem>;
+    });
   return (
     <div className="App">
-      <h>Hello React</h>
-      <p>Hello Again React</p>
-      <p>
-        {textInput}
-      </p>
+      <AppHeader></AppHeader>
+      <div className="app-grid">
+        {tattooElement};
+      </div>
+      {/* <TattooPost></TattooPost> */}
     </div>
   );
 }
-
 export default App;
