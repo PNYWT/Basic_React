@@ -18,3 +18,23 @@
     left: 0;
     right: 0;
 }
+
+.tattoo-post-content{
+    position: relative;
+    max-width: 1000px;
+    background-color: black;
+}
+
+.tattoo-post-content img{
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 120px);
+    /* 100vh คือ 100% ของความสูงหน้าจอ */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tattoo-post-content h4{
+    color: white;
+    text-align: center;
+}
