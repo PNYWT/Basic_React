@@ -6,3 +6,7 @@
     align-items: center;
     background-color: whitesmoke;
 }
+
+.app-header-logo{
+    height: 44px;
+}

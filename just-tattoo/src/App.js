@@ -4,9 +4,11 @@ import TattooItem from "./components//TattooItem";
 import TattooPost from "./components/TattooPost";
 import TattooModel from "./ModelData/tattoos";
 import { useState } from "react";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [selectedTattoo, setTextselectedTattoo] = useState(null);
+  const [searchText, setSearchText] = useState("");
 
   function clickTattooOpen(indexTattoo) {
     setTextselectedTattoo(indexTattoo);
@@ -16,22 +18,44 @@ function App() {
     setTextselectedTattoo(null);
   }
 
-  const tattooElement = TattooModel.map((tattoo, index) => {
-    return <TattooItem key={index} tattoo={tattoo} clickOpen = {clickTattooOpen}></TattooItem>;
+  //func filtered keyword you want
+  const filteredTattoo = TattooModel.filter((tattoo) => {
+    return tattoo.title.includes(searchText);
+  });
+
+  //func tattooElement to show
+  const tattooElement = filteredTattoo.map((tattoo, index) => {
+    return (
+      <TattooItem
+        key={index}
+        tattoo={tattoo}
+        clickOpen={clickTattooOpen}
+      ></TattooItem>
+    );
   });
 
   let tattooModelSelected = null;
   if (!!selectedTattoo) {
-    tattooModelSelected = <TattooPost tattoo={selectedTattoo} onBgClick = {clickTattooClose}></TattooPost>;
+    tattooModelSelected = (
+      <TattooPost
+        tattoo={selectedTattoo}
+        onBgClick={clickTattooClose}
+      ></TattooPost>
+    );
   }
 
   return (
     <div className="App">
       <AppHeader></AppHeader>
-      {/* <button onClick={() =>{
-        clickTattooOpen((TattooModel[3]))
-      }}>Click it !!!</button> */}
-      <div className="app-grid">{tattooElement}</div>
+      <section className="app-section">
+        <div className="app-container">
+          <SearchBar
+            valueSearchText={searchText}
+            onValueChange={setSearchText}
+          ></SearchBar>
+          <div className="app-grid">{tattooElement}</div>
+        </div>
+      </section>
       {tattooModelSelected}
     </div>
   );
