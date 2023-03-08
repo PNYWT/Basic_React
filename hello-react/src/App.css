@@ -7,3 +7,9 @@
   margin-right: auto;
   background-color: whitesmoke;
 }
+
+.app-note {
+  background-color: pink;
+  margin-bottom: 16px;
+  padding: 12px;
+}
