@@ -1,52 +1,23 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import PopupView from "./Component/PopupView";
-// import KeyBoardManager from "./Component/KeyBoardManager"; <KeyBoardManager>ใช้ก็เอาไปใส่ใน Return </KeyBoardManager>
+import LoginArea from "./Component/LoginArea";
+//import KeyBoardManager from "./Component/KeyBoardManager"; //<KeyBoardManager>ใช้ก็เอาไปใส่ใน Return </KeyBoardManager>
+// import MainBeforePopupView from "./Component/MainBeforePopupView"; ใช้ก็เอาไปใส่ใน Return <MainBeforePopupView/>
+
+const fakeUser = {userName:"Admin1234", fullName: "Admin Admin"};
+const LoginUserInfo = React.createContext();
 
 function App() {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  let popup = null;
-  if (isPopupOpen === true){
-    popup = <PopupView closePopup={() => setIsPopupOpen(false)}></PopupView>
-  }
   //return UI
   return (
-    <section className="app-section">
+    <LoginUserInfo.Provider value={fakeUser}>
+      <section className="app-section">
       <div className="app-container">
-        <h1>List API</h1>
-        <button onClick={()=> {setIsPopupOpen(true)}}>Open popup view</button>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+        <LoginArea/>
       </div>
-      {popup}
     </section>
+    </LoginUserInfo.Provider>
   );
 }
+export {LoginUserInfo};
 export default App;
