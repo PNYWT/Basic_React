@@ -1,23 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import "./App.css";
-import LoginArea from "./Component/LoginArea";
+import SelectTextAreaManager from "./Component/SelectTextAreaManager";
+import UploadFileManager from "./Component/UploadFileManager";
+// import UploadFileAndTextCopy from "./Component/UploadFileAndTextCopy"; //<UploadFileAndTextCopy></UploadFileAndTextCopy>
+// import LoginMain from "./Component/LoginMain"; <LoginMain></LoginMain>
 //import KeyBoardManager from "./Component/KeyBoardManager"; //<KeyBoardManager>ใช้ก็เอาไปใส่ใน Return </KeyBoardManager>
 // import MainBeforePopupView from "./Component/MainBeforePopupView"; ใช้ก็เอาไปใส่ใน Return <MainBeforePopupView/>
 
-const fakeUser = {userName:"Admin1234", fullName: "Admin Admin"};
-const LoginUserInfo = React.createContext();
-
 function App() {
+  const fileRef = useRef(null);
+  const textAreaRef = useRef(null);
+
+  function uploadFile() {
+    const currentFile = fileRef.current.files[0];
+    console.log(currentFile);
+  }
+
+  function commentPostCopy() {
+    textAreaRef.current.focus();
+    textAreaRef.current.select();
+  }
+
   //return UI
   return (
-    <LoginUserInfo.Provider value={fakeUser}>
-      <section className="app-section">
+    <section className="app-section">
       <div className="app-container">
-        <LoginArea/>
+        <h2>Hello useRef</h2>
+        <UploadFileManager uploadFileSelect={uploadFile} ref={fileRef}/>
+        <SelectTextAreaManager selectCommentPostCopy={commentPostCopy} ref={textAreaRef}/>
       </div>
     </section>
-    </LoginUserInfo.Provider>
   );
 }
-export {LoginUserInfo};
 export default App;
