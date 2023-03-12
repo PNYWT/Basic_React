@@ -1,0 +1,10 @@
+.boxModule{
+    background-color: rgb(225, 225, 255);
+    border: 2px solid red;
+    padding: 8px 16px;
+    margin-bottom: 24px;
+}
+
+.titleModule{
+    color: red;
+}

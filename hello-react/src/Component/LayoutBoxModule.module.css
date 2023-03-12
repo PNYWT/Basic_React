@@ -1,0 +1,10 @@
+.box{
+    border: 1px solid rgb(8, 158, 207);
+    border-radius: 10px;
+    padding: 8px 16px;
+}
+
+.title{
+    border-bottom: 3px solid rgb(85, 82, 82);
+    padding-bottom: 8px;
+}

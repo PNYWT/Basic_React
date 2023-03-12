@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+
 function UploadFileAndTextCopy(){
     const fileRef = useRef(null);
     const textAreaRef = useRef(null);
@@ -14,6 +15,7 @@ function UploadFileAndTextCopy(){
     }
     return(
        <div>
+        <h2>Hello useRef</h2>
          <p>
           <input type="file" ref={fileRef}></input>
         </p>
