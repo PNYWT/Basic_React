@@ -8,20 +8,29 @@ import "./App.css";
 // import LayoutGrid from "./Component/LayoutGrid";
 // import LayoutBoxModule from "./Component/LayoutBoxModule";
 // import NotificationList from "./Component/NotificationList"; <NotificationList></NotificationList>
-// import NotificationListUseStyled from "./Component/NotificationListUseStyled"; 
+// import NotificationListUseStyled from "./Component/NotificationListUseStyled";
 // import LayoutBoxAndGridManager from "./Component/LayoutBoxAndGridManager"; <LayoutBoxAndGridManager inputColumnsGrid={3}/>
 // import LayoutBoxAndGridModuleManager from "./Component/LayoutBoxAndGridModuleManager"; <LayoutBoxAndGridModuleManager></LayoutBoxAndGridModuleManager>
 // import NotificationListUseStyledUI from "./Component/NotificationListUseStyledUI"; <NotificationListUseStyledUI></NotificationListUseStyledUI>
+import AppHeader from "./ComponentLinkRoutes/AppHeader";
+import PageAbout from "./ComponentLinkRoutes/PageAbout";
+import PageHome from "./ComponentLinkRoutes/PageHome";
+import Page404 from "./ComponentLinkRoutes/Page404";
+import PagePost from "./ComponentLinkRoutes/PagePost";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   //return UI
   return (
-    <section className="app-section">
-      <div className="app-container">
-        <h2>Css Modules</h2>
-        
-      </div>
-    </section>
+    <div className="App">
+      <AppHeader />
+      <Routes>
+        <Route path="/" element={<PageHome/>} />
+        <Route path="about/*" element={<PageAbout/>} />
+        <Route path="post/:postId" element={<PagePost />} />
+        <Route path="*" element={<Page404/>} />
+      </Routes>
+    </div>
   );
 }
 export default App;
