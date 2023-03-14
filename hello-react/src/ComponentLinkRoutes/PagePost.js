@@ -3,33 +3,33 @@ import { useParams } from "react-router-dom";
 import LayoutPage from "./LayoutPage";
 
 function PagePost() {
+  const { postId } = useParams(); //postId ที่ต้องการเปิด
+  
   const [post, setPost] = useState({});
-  const [commentArray, setCommentArray] = useState([]);
-
-  const { postId } = useParams(); //postId เริ่มต้นจะเป็นเลข 1
-
-  async function getPost(id) {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  async function getPost(fromPostId) { //โหลด /posts/id เช่น /posts/1
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${fromPostId}`); 
     const responseJson = await response.json();
     setPost(responseJson);
   }
 
-  async function getCommentArray(id) {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
+  const [commentArray, setCommentArray] = useState([]);
+  async function getCommentArray(fromPostId) { //โหลด Comment
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${fromPostId}/comments`); 
     const responseJson = await response.json();
     setCommentArray(responseJson);
   }
-
   useEffect(() => {
     getPost(postId);
     getCommentArray(postId);
   }, [postId]);
 
+  //แสดง Comment UI
   const commentElements = commentArray.map(comment => {
     return (
       <div key={comment.id}>
         <p>{comment.body}</p>
         <p>{comment.email}</p>
+        <b><p>{comment.name}</p></b>
         <hr />
       </div>
     );
@@ -39,7 +39,7 @@ function PagePost() {
     <LayoutPage>
       <h2>{post.title}</h2>
       <p>{post.body}</p>
-      <hr />
+      <hr/>
       <h4>{commentArray.length} Comments</h4>
       {commentElements}
     </LayoutPage>
