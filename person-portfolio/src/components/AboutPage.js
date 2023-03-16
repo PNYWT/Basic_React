@@ -1,9 +1,76 @@
 import React, { useContext } from "react";
 import { DataContext } from "../App";
-import { AboutPageImg, AboutPageLayout, Container, ListStyleNone, MainFont, AboutPageSkill } from "../styles/styles";
+import {
+  AboutPageImg,
+  AboutPageLayout,
+  Container,
+  ListStyleNone,
+  MainFont,
+  AboutPageSkill,
+  AboutPageExperience,
+  ExperienceSubView,
+} from "../styles/styles";
 
 function AboutPage() {
   const dataJson = useContext(DataContext);
+
+  const myExperience = dataJson.work?.map((val) => {
+    if (val.endDate === "" && val.isCurrentRole === true) {
+      let regex = /[.]/;
+      let str = val.summary;
+      let subst = "$&\n";
+      let resultNewline = str.replace(regex, subst);
+      return (
+        <ExperienceSubView key={val.id}>
+          <ul>
+            <li>
+              <strong>Company:</strong> {val.name}{" "}
+            </li>
+            <li>
+              <strong>Location:</strong> {val.location}{" "}
+            </li>
+            <li>
+              <strong>Position:</strong> {val.position}
+            </li>
+            <li>
+              <strong>Startdate:</strong> {val.startDate}
+            </li>
+            <li>
+              <strong>CurrentRole:</strong> True
+            </li>
+          </ul>
+          <h4>Summary Job Description</h4>
+          {/* <p>{val.summary}</p> */}
+          <p>
+            {resultNewline}
+          </p>
+        </ExperienceSubView>
+      );
+    } else {
+      return (
+        <ExperienceSubView key={val.id}>
+          <ul>
+            <li>
+              <strong>Company:</strong> {val.name}{" "}
+            </li>
+            <li>
+              <strong>Location:</strong> {val.location}{" "}
+            </li>
+            <li>
+              <strong>Position:</strong> {val.position}
+            </li>
+            <li>
+              <strong>Startdate:</strong> {val.startDate} -{" "}
+              <strong> Enddate:</strong> {val.endDate}
+            </li>
+            <br></br>
+          </ul>
+          <h4>Summary Job Description</h4>
+          <p>{val.summary}</p>
+        </ExperienceSubView>
+      );
+    }
+  });
 
   return (
     <Container>
@@ -31,6 +98,9 @@ function AboutPage() {
             </a>
           </li>
         </ListStyleNone>
+        <hr></hr>
+        <h3>Experience</h3>
+        <AboutPageExperience>{myExperience}</AboutPageExperience>
         <hr></hr>
         <h3>My Skill</h3>
         <AboutPageSkill>

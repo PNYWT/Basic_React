@@ -6,7 +6,7 @@ import { MenuLink, UserLogo ,Container, NavBarStyle, NavConStyle } from "../styl
 function NavBar() {
   return (
     <NavBarStyle>
-      <Container>
+      <Container style={{background:"#333"}}>
         <NavConStyle>
         <div>
           <UserLogo to="/">Punyawat Profile</UserLogo>

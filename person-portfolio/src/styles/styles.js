@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
   max-width: 960px;
   margin: 0 auto;
-  /* background-color: whitesmoke; */
+  background-color: whitesmoke;
 `;
 
 // Nav
@@ -85,6 +85,18 @@ export const AboutPageImg = styled.img`
   border-radius: 100%;
 `;
 
+export const AboutPageExperience = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+`
+export const ExperienceSubView = styled.div`
+    text-align: left;
+    padding: 1rem;
+    ul {
+        list-style: none;
+    }
+`
+
 export const AboutPageSkill = styled.ul`
   list-style: none;
   /* display: flex;
@@ -92,6 +104,7 @@ export const AboutPageSkill = styled.ul`
   display: grid;
   grid-template-columns: 200px 200px 200px 200px;
   align-items: center;
+  padding-bottom: 2rem;
 
   li {
     margin: 1rem;
@@ -105,3 +118,4 @@ export const AboutPageSkill = styled.ul`
     }
   }
 `;
+
