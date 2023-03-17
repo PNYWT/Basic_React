@@ -46,5 +46,10 @@ https://docs.google.com/document/d/1rfVvB6WSU2grzzLpN_FpQ7h9hHFvN3_e1HU40ZKx9-Y/
 
 WebSite: https://taupe-youtiao-4b4d64.netlify.app
 
+# Express Basic
+
+**Lecture ประกอบการเรียน(ทำเองเพื่อความเข้าใจบทเรียนมากขึ้น)**
+https://docs.google.com/document/d/1Aolxmf45-Z-7itDxuGbhTG468n3wEOTLpuX2rR_rILw/edit
+
 # Mini-Project
 1. person-portfolio
