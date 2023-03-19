@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post ID -> {{post_id}}</title>
-</head>
+{{> baseHead customTitle=customTitleId }}
 <body>
-    <p>Hello Post ID -> ID={{post_id}}</p>
+    {{> siteHeader}}
+    {{#if onePost}}
+        <div style="background-color: #FFF4E0;">
+            <h2>{{onePost.titlePost}}</h2>
+            <p>
+                <span>{{onePost.userCreate}} | </span>
+                <span>{{onePost.createdDate }}</span>
+            </p>
+        </div>
+    {{else}}
+        <p>Not found psot</p>
+    {{/if}}
+    {{> siteFooter}}
 </body>
 </html>

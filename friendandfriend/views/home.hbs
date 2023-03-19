@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Friend&Friend</title>
-</head>
+{{> baseHead}}
 <body>
-    <p>Hello HomePage -> q={{q}}, sortBy={{sortBy}}</p>
+    {{> siteHeader}}
+    <div>
+        <h2>Hello Friend&Friend</h2>
+        <p>Let's talk.</p>
+        {{#each allPosts}}
+        <div style="background-color: #FFF4E0;">
+            <h4><a href="/p/{{ this.id }}">{{ this.titlePost }}</a></h4>
+            <p>
+                <span>{{ this.userCreate }} | </span>
+                <span>{{ this.createdDate }} | </span>
+            </p>
+            {{#if this.commentsCount}}
+                <p>{{ this.commentsCount }}</p>
+            {{else}}
+                <p>No Comment</p>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+    {{> siteFooter}}
 </body>
 </html>
