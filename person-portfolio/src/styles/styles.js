@@ -19,6 +19,7 @@ export const NavConStyle = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
 export const UserLogo = styled(Link)`
   color: whitesmoke;
   text-decoration: none;
