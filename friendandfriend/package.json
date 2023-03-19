@@ -10,7 +10,8 @@
   "author": "CallmeOni",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.0.0-beta.1"
+    "express": "^5.0.0-beta.1",
+    "hbs": "^4.2.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.3",
