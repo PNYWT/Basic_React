@@ -55,3 +55,4 @@ https://docs.google.com/document/d/1Aolxmf45-Z-7itDxuGbhTG468n3wEOTLpuX2rR_rILw/
 
 # Mini-Project
 1. person-portfolio
+2. Login and Registration
