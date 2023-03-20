@@ -54,5 +54,6 @@ https://www.youtube.com/watch?v=FvhM986U1_8
 https://docs.google.com/document/d/1Aolxmf45-Z-7itDxuGbhTG468n3wEOTLpuX2rR_rILw/edit
 
 # Mini-Project
-1. person-portfolio (Cr.Patiphan Phengpao)
-2. Login and Registration (Cr.Tech2 etc)
+1. person-portfolio React (Cr.Patiphan Phengpao)
+2. Login and Registration React (cr.Tech2 etc)
+3. friend&friend Express (cr.Zinglecode)
