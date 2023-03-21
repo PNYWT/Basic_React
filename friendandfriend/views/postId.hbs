@@ -7,13 +7,33 @@
         <div style="background-color: #FFF4E0;">
             <h2>{{onePost.titlePost}}</h2>
             <p>
-                <span>{{onePost.userCreate}} | </span>
-                <span>{{onePost.createdDate }}</span>
+                <span>{{onePost.userCreate}} |</span>
+                <span>{{onePost.dataTimeText }}</span>
             </p>
+            <p>{{onePost.contentText}}</p>
         </div>
+
+        {{#if postComments }}
+            <h4> {{ postComments.length }} comments</h4>
+        {{else}}
+            <h4>No comments</h4>
+        {{/if}}
+
+        {{#each postComments}}
+        <div style="background-color: #f5f5f5 ;">
+            <p>
+                <span>{{ this.userCreate }} |</span>
+                <span>{{ this.dataTimeText }}</span>
+            </p>
+            <p> {{ this.content }} </p>
+        </div>
+        {{/each}}
+
     {{else}}
-        <p>Not found psot</p>
+        <p>Not found post</p>
     {{/if}}
+
+   
     {{> siteFooter}}
 </body>
 </html>

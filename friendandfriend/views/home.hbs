@@ -11,12 +11,12 @@
             <h4><a href="/p/{{ this.id }}">{{ this.titlePost }}</a></h4>
             <p>
                 <span>{{ this.userCreate }} | </span>
-                <span>{{ this.createdDate }} | </span>
+                <span>{{ this.dataTimeText }}</span>
             </p>
             {{#if this.commentsCount}}
-                <p>{{ this.commentsCount }}</p>
+                <p>{{ this.commentsCount }} comments</p>
             {{else}}
-                <p>No Comment</p>
+                <p>No comment</p>
             {{/if}}
         </div>
         {{/each}}

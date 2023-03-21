@@ -10,5 +10,6 @@ const db = knex.default({
         database : 'express_friend&friend'
     }
 })
+// เรียก class นี้กี่ครั้งมันก็จะเชื่อมแค่ครั้งเดียวแล้วแชร์กัน
 
 module.exports = db;
