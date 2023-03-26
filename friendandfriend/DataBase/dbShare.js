@@ -7,7 +7,8 @@ const db = knex.default({
         port : 3306,
         user : 'root',
         password : 'Callmeoni1996',
-        database : 'express_friend&friend'
+        database : 'express_friend&friend',
+        timezone: "+00:00" //ตั้งค่าเวลาสากล
     }
 })
 // เรียก class นี้กี่ครั้งมันก็จะเชื่อมแค่ครั้งเดียวแล้วแชร์กัน

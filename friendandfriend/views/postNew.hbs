@@ -6,6 +6,27 @@
     <div>
         <h2>Create New Post</h2>
         <p>Let's create.</p>
+        <form action="/p/new" method="post">
+            <p>
+                <input type="text" name="titlePost" placeholder="Title" value="{{ values.titlePost }}">
+            </p>
+            <p>
+                <textarea name="contentText" placeholder="content">{{ values.contentText }}</textarea>
+            </p>
+            <p>
+                <input type="text" name="userCreate" placeholder="Username" value="{{ values.userCreate }}">
+            </p>
+            <p>
+                <input id="input-accepted" type="checkbox" name="accepted">
+                <label for="input-accepted">ยืนยันการโพสข้อความ</label>
+            </p>
+            <p>
+                <button type="submit">Create</button>
+            </p>
+            {{#if errorMsg }}
+                <p style="color: red;"><Strong>{{ errorMsg }}*</Strong></p>
+            {{/if}}
+        </form>
     </div>
     {{> siteFooter}}
 </body>
