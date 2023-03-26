@@ -21,7 +21,7 @@ router.post("/new", async (request, response) => {
     }
 
     //Create post insert to db
-    await db.insert({titlePost, contentText, userCreate}).into("post")
+    await db.insert({titlePost, contentText, userCreate, createdDate: new Date()}).into("post")
   } catch (error) {
     // console.log(`postsRouter Error /new -> ${error}`);
     let errorMsg = "connection error";
