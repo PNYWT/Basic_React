@@ -6,7 +6,7 @@ const db = knex.default({
         host : '127.0.0.1',
         port : 3306,
         user : 'root',
-        password : 'xxxxxxx',
+        password : 'Callmeoni1996',
         database : 'express_friend&friend',
         timezone: "+00:00" //ตั้งค่าเวลาสากล
     }
