@@ -4,6 +4,7 @@
 <body>
     {{> siteHeader}}
     {{#if onePost}}
+    {{!-- Topic Post --}}
         <div style="background-color: #FFF4E0;">
             <h2>{{onePost.titlePost}}</h2>
             <p>
@@ -12,7 +13,28 @@
             </p>
             <p>{{onePost.contentText}}</p>
         </div>
-
+        {{!-- form // values ส่งมาจาก router "/:post_id/comment" --}}
+        <hr>
+             <form action="/p/{{onePost.id}}/comments" method="post">
+            <p>
+                <textarea name="contentText" placeholder="Comment this post">{{ values.contentText }}</textarea>
+            </p>
+            <p>
+                <input type="text" name="userCreate" placeholder="Comment by username" value="{{ values.userCreate }}">
+            </p>
+            <p>
+                <input id="input-accepted" type="checkbox" name="accepted">
+                <label for="input-accepted">ยืนยันการโพสข้อความ</label>
+            </p>
+            <p>
+                <button type="submit">Create</button>
+            </p>
+            {{#if errorMsg }}
+                <p style="color: red;"><Strong>{{ errorMsg }}*</Strong></p>
+            {{/if}}
+        </form>
+        <hr>
+        {{!-- Show Comment --}}
         {{#if postComments }}
             <h4> {{ postComments.length }} comments</h4>
         {{else}}
