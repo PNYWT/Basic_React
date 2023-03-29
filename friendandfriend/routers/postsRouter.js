@@ -25,7 +25,7 @@ router.post("/new", async (request, response) => {
       .insert({ titlePost, contentText, userCreate, createdDate: new Date() })
       .into("post");
   } catch (error) {
-    // console.log(`postsRouter Error /new -> ${error}`);
+    console.error("/new ----->" + error)
     let errorMsg = "connection error";
     if (error.message === "Please complete the information") {
       errorMsg = error.message;
@@ -66,11 +66,12 @@ async function getPostAndComments(postId) {
     /*
         เข้าถึง Table comments
         เลือก postId ของ table ที่มีค่า == route post_id เพื่อดึง comment เฉพาะหน้านี้ออกมา
-        */
+    */
     postComments = await db
       .select("*")
       .from("comments")
-      .where("postId", +post_id);
+      .where("postId", +postId)
+      .orderBy("id", "asc");
     postComments = postComments.map((comment) => {
       const dataTimeText = dayjs(comment.createdDate).format(
         "DD MMM YYYY - HH:mm"
@@ -78,8 +79,9 @@ async function getPostAndComments(postId) {
       return { ...comment, dataTimeText };
     });
   } catch (err) {
-    console.log(`postsRouter Error /:post_id -> ${err}`);
+    console.error(`postsRouter Error /:post_id -> ${err}`);
   }
+
   const customTitleId = !!onePost?.titlePost
     ? `${onePost.titlePost} | `
     : `Not Found | `;
@@ -88,44 +90,40 @@ async function getPostAndComments(postId) {
 
 router.get("/:post_id", async (request, response) => {
   const { post_id } = request.params;
-  const postData = await getPostAndComments(post_id);
-  response.render("postId", postData);
+  const postAndCommentsData = await getPostAndComments(post_id);
+  response.render("postId", postAndCommentsData);
 });
 
 //สร้าง Comment ใหม่ ในหน้าโพสที่กดดู
 router.post("/:post_id/comments", async (request, response) => {
   const { post_id } = request.params;
   const { contentText, userCreate, accepted } = request.body ?? {};
+
   try {
     // Validations
     if (!contentText || !userCreate) {
-      throw new Error("Please complete the information");
+      throw new Error("Please complete the content");
     } else if (accepted == undefined || accepted != "on") {
       throw new Error("Please accept policy");
     }
     //Create comments insert to db
-    await db
-      .insert({
-        contentText,
-        userCreate,
-        createdDate: new Date(),
-        postId: +post_id,
-      })
-      .into("comments");
+    await db.insert({content: contentText, userCreate, createdDate: new Date(), postId: +post_id}).into("comments");
   } catch (error) {
-    let errorMsg = "connection error";
-    if (error.message === "Please complete the information") {
+    console.error("/:post_id/comments ----->" + error)
+    let errorMsg = "Comment error";
+    if (error.message === "Please complete the content") {
       errorMsg = error.message;
     } else if (error.message === "Please accept policy") {
       errorMsg = error.message;
     }
+    // Get post and comments
     //ถ้ากรอกไม่ครบหรือไม่ได้ accept policy ให้เตะกลับไป โพสที่กดดูเหมือนเดิม + error + ข้อมูลที่ใส่มา กลับไปด้วย
     const postData = await getPostAndComments(post_id);
     // ...postData คือการส่งข้อมูลทั้งหมดไป ซึ่งตัวนี้ได้มาจากโพสหน้าที่เรากดดู สร้างเป็น Function getPostAndComments
     return response.render("postId", {
       ...postData,
       errorMsg,
-      values: { contentText, userCreate },
+      commentValues: { contentText, userCreate },
     });
   }
   //เตะกลับไปหน้าโพสที่กดดูเหมือนเดิม

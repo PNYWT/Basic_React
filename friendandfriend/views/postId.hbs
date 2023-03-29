@@ -13,14 +13,14 @@
             </p>
             <p>{{onePost.contentText}}</p>
         </div>
-        {{!-- form // values ส่งมาจาก router "/:post_id/comment" --}}
+        {{!-- form // values ส่งมาจาก router "/:post_id/comments" --}}
         <hr>
-             <form action="/p/{{onePost.id}}/comments" method="post">
+             <form action="/p/{{ onePost.id }}/comments" method="post">
             <p>
-                <textarea name="contentText" placeholder="Comment this post">{{ values.contentText }}</textarea>
+                <textarea name="contentText" placeholder="Comment this post">{{ commentValues.contentText }}</textarea>
             </p>
             <p>
-                <input type="text" name="userCreate" placeholder="Comment by username" value="{{ values.userCreate }}">
+                <input type="text" name="userCreate" placeholder="Comment by username" value="{{ commentValues.userCreate }}">
             </p>
             <p>
                 <input id="input-accepted" type="checkbox" name="accepted">
@@ -34,7 +34,7 @@
             {{/if}}
         </form>
         <hr>
-        {{!-- Show Comment --}}
+        {{!-- Show Comment // postComments ส่งค่ามาจาก router /:post_id--}}
         {{#if postComments }}
             <h4> {{ postComments.length }} comments</h4>
         {{else}}
