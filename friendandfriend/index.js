@@ -1,5 +1,5 @@
 require("dotenv").config();
-const port = process.env.APP_PORT;
+const port = process.env.APP_PORT ?? process.env.PORT;
 
 const express = require("express");
 const hbs = require("hbs");
@@ -21,5 +21,9 @@ app.use("/p", postsRouter);
 
 
 app.listen(port, () =>{
-    console.log(`Open http://localhost:${port}`)
+    if (process.env.NODE_ENV === 'production'){
+        console.log(`Open ${port} Success`)
+    }else{
+        console.log(`Open http://localhost:${port}`)
+    }
 });
