@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> baseHead}}
+<body>
+    {{> siteHeader}}
+    <section class="section">
+        <div class="container">
+        <h2>Hello Friend&Friend</h2>
+        <p class="mg-bottom-large">Let's talk.</p>
+        {{#each allPosts}}
+        <div class="box">
+            <h4><a href="/p/{{ this.id }}">{{ this.titlePost }}</a></h4>
+            <p>
+                <span>{{ this.userCreate }} | </span>
+                <span class="text-gray">{{ this.dataTimeText }}</span>
+            </p>
+            {{#if this.commentsCount}}
+                <div>{{ this.commentsCount }} comments</div>
+            {{else}}
+                <div>No comment</div>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+    </section>
+    {{> siteFooter}}
+    {{> siteScrollTop}}
+    {{> siteScripts}}
+</body>
+</html>

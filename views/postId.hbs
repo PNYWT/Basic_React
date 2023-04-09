@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> baseHead customTitle=customTitleId }}
+
+<body>
+    {{> siteHeader}}
+    <section class="section">
+        <div class="container">
+            {{#if onePost}}
+                {{!-- Topic Post --}}
+                <div class="box">
+                    <h2>{{onePost.titlePost}}</h2>
+                    <p>
+                        <span>{{onePost.userCreate}} |</span>
+                        <span class="text-gray">{{onePost.dataTimeText }}</span>
+                    </p>
+                    <div>{{onePost.contentText}}</div>
+                </div>
+                {{!-- form // values ส่งมาจาก router "/:post_id/comments" --}}
+                <hr>
+                <form action="/p/{{ onePost.id }}/comments" method="post">
+                    <p>
+                        <textarea name="contentText"
+                            placeholder="Comment this post" rows="5">{{ commentValues.contentText }}</textarea>
+                    </p>
+                    <p>
+                        <input type="text" name="userCreate" placeholder="Comment by username"
+                            value="{{ commentValues.userCreate }}">
+                    </p>
+                    <p>
+                        <input id="input-accepted" type="checkbox" name="accepted">
+                        <label for="input-accepted">ยืนยันการโพสข้อความ</label>
+                    </p>
+                    <p>
+                        <button class="button" type="submit">Create</button>
+                    </p>
+                    {{#if errorMsg }}
+                    <p style="color: red;"><Strong>{{ errorMsg }}*</Strong></p>
+                    {{/if}}
+                </form>
+                <hr>
+                {{!-- Show Comment // postComments ส่งค่ามาจาก router /:post_id--}}
+                {{#if postComments }}
+                <h4> {{ postComments.length }} comments</h4>
+                {{else}}
+                <h4>No comments</h4>
+                {{/if}}
+
+                {{#each postComments}}
+                <div class="box">
+                    <p>
+                        <span>{{ this.userCreate }} |</span>
+                        <span class="text-gray">{{ this.dataTimeText }}</span>
+                    </p>
+                    <div> {{ this.content }} </div>
+                </div>
+                {{/each}}
+
+                {{else}}
+                <p><strong> Not found post</strong></p>
+            {{/if}}
+        </div>
+    </section>
+    {{> siteFooter}}
+    {{> siteScrollTop}}
+    {{> siteScripts}}
+</body>
+
+</html>

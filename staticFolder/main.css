@@ -1,0 +1,226 @@
+/* mali-regular - latin_thai */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Mali';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/mali-v9-latin_thai-regular.woff2') format('woff2'),
+        /* Chrome 36+, Opera 23+, Firefox 39+ */
+        url('fonts/mali-v9-latin_thai-regular.woff') format('woff');
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* mali-600 - latin_thai */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Mali';
+    font-style: normal;
+    font-weight: 600;
+    src: url('fonts/mali-v9-latin_thai-600.woff2') format('woff2'),
+        /* Chrome 36+, Opera 23+, Firefox 39+ */
+        url('fonts/mali-v9-latin_thai-600.woff') format('woff');
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
+/* General */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+html {
+    color: #333333;
+    font-family: "Mali", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #111111;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+p {
+    line-height: 1.6;
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+a {
+    color: rgb(24, 179, 24);
+}
+
+hr {
+    border: 1px dashed rgb(150, 150, 150);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mg-bottom-large{
+    margin-bottom: 30px;
+}
+
+.text-gray{
+    color: #888888;
+}
+
+.section {
+    /* 100vh -> 100% ของความสูง Browser */
+    min-height: calc(100vh - 100px);
+    padding: 30px 15px;
+}
+
+.container {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box {
+    background-color: whitesmoke;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 16px;
+    margin-bottom: 14px;
+    padding: 10px;
+}
+
+/* site-header */
+.site-header {
+    background-color: whitesmoke;
+    border-bottom: 1px solid rgb(150, 150, 150);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 55px;
+}
+
+.site-header-item {
+    padding: 0px 12px;
+}
+
+.site-header-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.site-header-logo img {
+    display: inline-block;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.site-header-logo span {
+    color: #111111;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* site-footer */
+.site-footer {
+    background-color: whitesmoke;
+    border-top: 1px solid rgb(150, 150, 150);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+/* Form */
+input[type="text"], textarea{
+    appearance: none;
+    color: #333333;
+    background-color: white;
+    border: 1px solid #888888;
+    border-radius: 8px;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 8px;
+}
+
+input[type="text"]{
+    height: 40px;
+}
+
+
+input[type="text"]:focus, textarea:focus{
+    border-color: rgb(24, 179, 24);
+}
+
+.button{
+    appearance: none;
+    color: white;
+    background-color: rgb(24, 179, 24);
+    border: 1px solid rgb(24, 179, 24);
+    border-radius: 8px;
+    text-decoration: none;    /* button like ไม่มีเส้นใต้ */
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+}
+
+.button:hover{
+    appearance: none;
+    color: white;
+    background-color: rgb(19, 145, 19);
+    border-color: rgb(19, 145, 19);
+}
+
+/* btn header */
+.button.button-outlined{
+    color: rgb(24, 179, 24);
+    background-color: white;
+}
+
+/* siteScrollTop */
+.site-Scroll-Top{
+    color: #888888;
+    background-color: white;
+    border: 1px solid #888888;
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 10;
+    cursor: pointer;
+}
