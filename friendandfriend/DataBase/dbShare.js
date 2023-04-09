@@ -3,11 +3,11 @@ const knex = require("knex");
 const db = knex.default({
     client:"mysql2",
     connection: {
-        host : '127.0.0.1',
-        port : 3306,
-        user : 'root',
-        password : 'Admin1234',
-        database : 'express_friend&friend',
+        user : process.env.DB_USER,
+        password : process.env.DB_PASS,
+        host : process.env.DB_HOST,
+        port : process.env.DB_PORT,
+        database : process.env.DB_NAME,
         timezone: "+00:00" //ตั้งค่าเวลาสากล
     }
 })
